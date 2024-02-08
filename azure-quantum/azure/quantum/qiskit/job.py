@@ -79,9 +79,9 @@ class AzureQuantumJob(JobV1):
         self._azure_job.submit()
         return
 
-    def result(self, timeout=None, sampler_seed=None):
+    def result(self, timeout=None, sampler_seed=None, print_progress=False):
         """Return the results of the job."""
-        self._azure_job.wait_until_completed(timeout_secs=timeout)
+        self._azure_job.wait_until_completed(timeout_secs=timeout, print_progress=print_progress)
 
         success = self._azure_job.details.status == "Succeeded"
         results = self._format_results(sampler_seed=sampler_seed)
