@@ -93,7 +93,7 @@ class Job(BaseJob, FilteredJob):
                 + f"it is in status '{self.details.status}'"
             )
             if print_progress:
-                print(".", end="", flush=True)
+                logger.info(".")
             time.sleep(poll_wait)
             self.refresh()
             poll_wait = (
